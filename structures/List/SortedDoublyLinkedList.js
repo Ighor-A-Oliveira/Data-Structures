@@ -98,3 +98,4 @@ class Node {
     }
   }
   
+  module.exports = SortedDoublyLinkedList;

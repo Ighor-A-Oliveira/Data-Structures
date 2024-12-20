@@ -181,9 +181,9 @@ class FibonacciHeap {
         }
     }
     
-    
-    
 }
+
+module.exports = FibonacciHeap
 
 // Example usage:
 const heap = new FibonacciHeap();

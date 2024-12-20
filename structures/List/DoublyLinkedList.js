@@ -185,3 +185,4 @@ class Node {
     }
   }
   
+  module.exports = DoublyLinkedList;

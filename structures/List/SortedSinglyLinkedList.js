@@ -74,4 +74,7 @@ class Node {
       }
     }
   }
+
+
+  module.exports = SortedSinglyLinkedList;
   

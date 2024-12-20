@@ -54,7 +54,18 @@ class ArrayStack {
       callback(this._collection[i], i);
     }
   }
+
+  // Search for an element in the stack
+  search(element) {
+    for (let i = this._collection.length - 1; i >= 0; i--) {
+      if (this._collection[i] === element) {
+        return i; // return the index of the first occurrence
+      }
+    }
+    return -1; // element not found
+  }
 }
+
 
 module.exports = ArrayStack;
 

@@ -133,6 +133,9 @@ class HashTable {
       console.log(this.storage);
     }
   }
+
+
+  module.exports = HashTable;
   
   // Example Usage
   const ht = new HashTable();

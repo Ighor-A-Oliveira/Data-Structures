@@ -23,7 +23,7 @@ class ArrayQueue {
     }
 
     // Returns what item is at the front of the queue
-    front() {
+    peek() {
         return this._collection[0];
     }
 
@@ -36,6 +36,12 @@ class ArrayQueue {
     isEmpty() {
         return (this._collection.length === 0);
     }
+
+    // Search for an element in the queue
+    contains(element) {
+        return this._collection.indexOf(element);
+    }
 }
+
 
 module.exports = ArrayQueue;

@@ -1,86 +1,83 @@
 //Use case: When stack size is variable or large
-class HashSet {
-  constructor() {
-      this.collection = {};
+class Node {
+    constructor(value, next = null) {
+      this.value = value;
+      this.next = next;
+    }
   }
-
-  // Check if an element exists in the set
-  has(element) {
-      return this.collection[element] !== undefined;
-  }
-
-  // Get all elements in the set
-  values() {
-      return Object.keys(this.collection);
-  }
-
-  // Add an element to the set
-  add(element) {
-      if (!this.has(element)) {
-          this.collection[element] = true;
-          return true;
+  
+  class LinkedListStack {
+    constructor() {
+      this._head = null; // The head of the linked list (top of the stack)
+      this._size = 0; // Tracks the size of the stack
+    }
+  
+    // Push an element onto the stack
+    push(element) {
+      const newNode = new Node(element, this._head); // Create a new node with current head as next
+      this._head = newNode; // Update head to point to the new node
+      this._size++;
+      return this._size;
+    }
+  
+    // Pop the top element from the stack
+    pop() {
+      if (this.isEmpty()) {
+        return undefined; // Return undefined if stack is empty
       }
-      return false;
-  }
-
-  // Remove an element from the set
-  remove(element) {
-      if (this.has(element)) {
-          delete this.collection[element];
-          return true;
+      const poppedValue = this._head.value; // Store the value of the head
+      this._head = this._head.next; // Move head to the next node
+      this._size--;
+      return poppedValue; // Return the popped value
+    }
+  
+    // Peek at the top element without removing it
+    peek() {
+      if (this.isEmpty()) {
+        return undefined; // Return undefined if stack is empty
       }
-      return false;
+      return this._head.value; // Return the value of the head
+    }
+  
+    // Check if the stack is empty
+    isEmpty() {
+      return this._head === null; // If head is null, the stack is empty
+    }
+  
+    // Get the size of the stack
+    size() {
+      return this._size;
+    }
+  
+    // Clear all elements from the stack
+    clear() {
+      this._head = null; // Clear the head, effectively emptying the stack
+      this._size = 0;
+    }
+  
+    // Search for an element in the stack
+    search(element) {
+      let current = this._head;
+      let index = 0;
+      while (current) {
+        if (current.value === element) {
+          return index; // Return the index of the first occurrence
+        }
+        current = current.next;
+        index++;
+      }
+      return -1; // Element not found
+    }
+  
+    // Traverse the stack from top to bottom
+    traverse(callback) {
+      let current = this._head;
+      while (current) {
+        callback(current.value, index);
+        current = current.next;
+      }
+    }
   }
+  
+  module.exports = LinkedListStack;
 
-  // Get the size of the set
-  size() {
-      return Object.keys(this.collection).length;
-  }
-
-  // Union of two sets
-  union(otherSet) {
-      const unionSet = new HashSet();
-      this.values().forEach(element => unionSet.add(element));
-      otherSet.values().forEach(element => unionSet.add(element));
-      return unionSet;
-  }
-
-  // Intersection of two sets
-  intersection(otherSet) {
-      const intersectionSet = new HashSet();
-      this.values().forEach(element => {
-          if (otherSet.has(element)) {
-              intersectionSet.add(element);
-          }
-      });
-      return intersectionSet;
-  }
-
-  // Difference between two sets
-  difference(otherSet) {
-      const differenceSet = new HashSet();
-      this.values().forEach(element => {
-          if (!otherSet.has(element)) {
-              differenceSet.add(element);
-          }
-      });
-      return differenceSet;
-  }
-
-  // Check if the current set is a subset of another set
-  subset(otherSet) {
-      return this.values().every(element => otherSet.has(element));
-  }
-
-  // Check if two sets are disjoint (no common elements)
-  isDisjoint(otherSet) {
-      return this.values().every(element => !otherSet.has(element));
-  }
-
-  // Convert the set to an array
-  toArray() {
-      return this.values();
-  }
-}
-
-module.exports = HashSet;

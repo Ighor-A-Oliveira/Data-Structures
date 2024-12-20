@@ -59,3 +59,4 @@ class CircularDeque {
     }
   }
   
+  module.exports = CircularDeque

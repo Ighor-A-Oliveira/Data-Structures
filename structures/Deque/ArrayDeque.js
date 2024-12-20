@@ -39,3 +39,4 @@ class ArrayDeque {
     }
   }
   
+  module.exports =ArrayDeque

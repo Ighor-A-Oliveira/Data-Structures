@@ -164,4 +164,7 @@ class Node {
       } while (current !== this.head);
     }
   }
+
+
+  module.exports = SinglyCircularLinkedList;
   

@@ -176,3 +176,4 @@ class Node {
     }
   }
   
+  module.exports = DoublyCircularLinkedList;

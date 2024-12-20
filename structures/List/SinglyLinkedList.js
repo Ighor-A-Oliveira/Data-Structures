@@ -133,6 +133,8 @@ class Node {
       return this.size;
     }
   }
+
+  module.exports = SinglyLinkedList;
   
   // Example Usage
   const list = new SinglyLinkedList();
