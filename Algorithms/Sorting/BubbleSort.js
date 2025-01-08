@@ -11,9 +11,11 @@ function bubbleSort(newNumbers) {
     // Outer loop: Iterate over the array multiple times
     for (let currentPass = 0; currentPass < arrayLength; currentPass++) {
         isSorted = true;
+        console.log("Outer for:" + numbersArray)
 
         // Inner loop: Compare each adjacent pair of elements
-        for (let currentIndex = 0; currentIndex < arrayLength - 1 - currentPass; currentIndex++) {
+        for (let currentIndex = 0; currentIndex < arrayLength - 1 - currentPass; currentIndex++) { 
+            console.log(currentIndex+" Inner for pre if:" + numbersArray)
             // If the current element is greater than the next element, swap them
             if (numbersArray[currentIndex] > numbersArray[currentIndex + 1]) {
                 // Perform the swap using destructuring assignment
@@ -21,6 +23,7 @@ function bubbleSort(newNumbers) {
                     [numbersArray[currentIndex + 1], numbersArray[currentIndex]];
                 isSorted = false;
             }
+            console.log("Inneer for pos if:" + numbersArray)
         }
 
         // If no swaps were made during this pass, the array is already sorted
